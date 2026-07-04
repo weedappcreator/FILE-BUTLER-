@@ -29,7 +29,7 @@ header() { echo -e "\n${BLUE}═════════════════
 
 get_file_type() {
     local ext
-    ext=$(echo "${1,,}" | tr -d ' ')
+    ext=$(echo "$1" | tr '[:upper:]' '[:lower:]' | tr -d ' ')
     case "$ext" in
         pdf|doc|docx|txt|xlsx|csv|pptx|pages|numbers|keynote|odt|rtf|md)
             echo "Documents" ;;
