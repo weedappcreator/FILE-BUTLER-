@@ -1,0 +1,33 @@
+# file-butler Organization Rules
+# Configure custom automation rules for file organization
+
+rules:
+  # Organize Downloads folder
+  - folders: ~/Downloads
+    subfolders: false
+    filters:
+      - extension: pdf
+    actions:
+      - move: ~/Documents/PDFs/
+
+  # Organize Screenshots
+  - folders: ~/Desktop
+    subfolders: false
+    filters:
+      - extension:
+          - jpg
+          - png
+      - name: "Screenshot*"
+    actions:
+      - move: ~/Pictures/Screenshots/{created.year}/{created.month}/
+
+  # Archive old documents
+  - folders: ~/Documents
+    subfolders: false
+    filters:
+      - extension: pdf
+      - lastmodified:
+          days: 365
+          mode: older
+    actions:
+      - move: ~/Documents/Archive/{created.year}/

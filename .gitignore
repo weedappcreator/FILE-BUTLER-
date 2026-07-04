@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+logs/
+file-butler.log
+
+# Backups
+.backups/
+*.bak
+*.backup
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+.temp/
+
+# Local config overrides
+config/*.local.conf
+config/*.local.yaml

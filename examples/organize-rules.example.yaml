@@ -1,0 +1,64 @@
+# Example: file-butler Organization Rules
+# Copy to config/organize-rules.yaml and customize for your needs
+
+rules:
+  # Rule 1: Organize Downloads by file type
+  - folders: ~/Downloads
+    subfolders: false
+    filters:
+      - extension: pdf
+    actions:
+      - move: ~/Documents/PDFs/
+
+  # Rule 2: Organize Screenshots automatically
+  - folders: ~/Desktop
+    subfolders: false
+    filters:
+      - extension:
+          - jpg
+          - png
+      - name: "Screenshot*"
+    actions:
+      - move: ~/Pictures/Screenshots/{created.year}/{created.month}/
+
+  # Rule 3: Archive old documents
+  - folders: ~/Documents
+    subfolders: false
+    filters:
+      - extension: pdf
+      - lastmodified:
+          days: 365
+          mode: older
+    actions:
+      - move: ~/Documents/Archive/{created.year}/
+
+  # Rule 4: Organize code files
+  - folders: ~/Downloads
+    subfolders: false
+    filters:
+      - extension:
+          - js
+          - ts
+          - py
+          - go
+    actions:
+      - move: ~/Projects/Code/{created.year}/
+
+  # Rule 5: Clean up temporary files
+  - folders: ~/Desktop
+    subfolders: false
+    filters:
+      - extension:
+          - tmp
+          - temp
+          - bak
+    actions:
+      - delete
+
+  # Rule 6: Organize by date
+  - folders: ~/Downloads
+    subfolders: false
+    filters:
+      - extension: "*"
+    actions:
+      - move: ~/Documents/Downloads/{created.year}/{created.month}/
