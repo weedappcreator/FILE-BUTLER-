@@ -1,82 +1,70 @@
 # file-butler 🗂️
 
-**Automatically organize your Mac files by type and project name with consistent YYYY-MM-DD dating. Uses F2, RnR, and Organize for intelligent batch renaming, regex patterns, and rule-based automation.**
+> Automatically organize your Mac files by type and project name with YYYY-MM-DD dating.
 
----
-
-## Features
-
-✅ **Auto-organize** files into `FileType/ProjectName/` structures
-✅ **Batch rename** with YYYY-MM-DD date prefixes  
-✅ **Regex-powered renaming** via RnR for complex patterns
-✅ **Rule-based automation** with Organize tool
-✅ **Scans all directories** (Desktop, Documents, Downloads, Projects, etc.)
-✅ **Safe by default** — dry-run mode previews changes
-✅ **Undo functionality** for mistake recovery
-
----
-
-## Installation
-
-### Quick Start
+## One-Command Install
 
 ```bash
-chmod +x install.sh file-butler.sh
-./install.sh
+curl -fsSL https://raw.githubusercontent.com/weedappcreator/FILE-BUTLER-/main/install.sh | bash
 ```
 
-This installs F2, RnR, and Organize automatically.
+Then open a new terminal and run:
 
----
-
-## Configuration
-
-### 1. File Types (`config/file-types.conf`)
+```bash
+file-butler
 ```
-Documents=pdf,doc,docx,txt,xlsx,csv
-Images=jpg,jpeg,png,gif,svg,webp
-Videos=mp4,mov,avi,mkv,flv
-Audio=mp3,wav,aac,flac,m4a
-Code=js,py,ts,java,go,rs,cpp
-Archives=zip,tar,gz,rar,7z
-```
-
-### 2. Projects (`config/projects.conf`)
-```
-website=~/Projects/website
-mobile=~/Projects/mobile
-backend=~/Projects/backend
-```
-
-### 3. Organization Rules (`config/organize-rules.yaml`)
-Define custom automation rules for file organization.
 
 ---
 
 ## Usage
 
-**Dry-run (preview changes):**
+### Interactive mode (recommended)
 ```bash
-./file-butler.sh --dry-run
+file-butler
 ```
+Launches a guided menu — choose folder, mode, and preview before applying.
 
-**Execute:**
+### Direct commands
 ```bash
-./file-butler.sh --execute
-```
-
-**Undo:**
-```bash
-./file-butler.sh --undo
+file-butler --path ~/Downloads --dry-run    # Preview changes
+file-butler --path ~/Downloads --execute    # Apply changes
+file-butler --install                       # Install/update dependencies
+file-butler --log                           # View activity log
+file-butler --help                          # Show help
 ```
 
 ---
 
-## Tools Used
+## What it does
 
-- **F2** — Fast batch renaming with undo
-- **RnR** — Regex-based advanced renaming  
-- **Organize** — Rule-based automation
+1. **Renames** all files with `YYYY-MM-DD_` prefix
+2. **Organizes** files into type folders:
+   - `Documents/` — PDF, Word, Excel, etc.
+   - `Images/` — JPG, PNG, HEIC, etc.
+   - `Videos/` — MP4, MOV, etc.
+   - `Audio/` — MP3, WAV, etc.
+   - `Code/` — JS, Python, JSON, etc.
+   - `Archives/` — ZIP, RAR, etc.
+   - `Design/` — Figma, Sketch, etc.
+   - `Installers/` — DMG, PKG, etc.
+3. **Moves** existing project folders into `Projects/`
+4. **Unknown files** are left in place (never lost)
+
+---
+
+## Powered by
+
+- **F2** — Fast batch file renaming
+- **RnR** — Regex-based advanced renaming
+- Pure bash organization (no Python/Homebrew required)
+
+---
+
+## Requirements
+
+- macOS
+- `curl` (pre-installed on Mac)
+- Internet connection (for first install only)
 
 ---
 
